@@ -3,7 +3,7 @@ require "base64"
 require "json"
 
 describe ImageData do
-  let(:data){{"name" => "Stephen", "movie" => "hi", "img" => "something.png", "view" => "/invite_maker/something.png"}}
+  let(:data){{"name" => "Stephen", "movie" => "hi", "img" => "something.png", "view" => "/invite_maker/something.png", "quality" => "60"}}
   let(:no_name_view_data){{"movie" => "hi", "img" => "something"}}
   let(:json_data){data.to_json}
   let(:json_no_name_view_data){no_name_view_data.to_json}
@@ -31,5 +31,14 @@ describe ImageData do
   it "can extract a default name" do
     subject = described_class.decode(no_view_encoded_data)
     expect(subject.name).to eq no_name_view_data.hash
+  end
+
+  it("can extract the quality from encoded data") do
+    expect(subject.quality).to eq 60
+  end
+
+  it "can extract a default name" do
+    subject = described_class.decode(no_view_encoded_data)
+    expect(subject.quality).to eq 50
   end
 end

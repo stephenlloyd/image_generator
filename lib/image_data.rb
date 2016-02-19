@@ -4,6 +4,7 @@ class ImageData
 
   VIEW_EXTENSION = ".erb"
   DEFAULT_VIEW = "/default"
+  DEFAULT_IMAGE_QUALITY = 50
 
   def self.decode(data)
     new(data: JSON.parse(Base64.urlsafe_decode64(data)))
@@ -25,6 +26,10 @@ class ImageData
 
   def name
     @data.fetch("name", @data.hash)
+  end
+
+  def quality
+    @data.fetch("quality", DEFAULT_IMAGE_QUALITY).to_i
   end
 
 

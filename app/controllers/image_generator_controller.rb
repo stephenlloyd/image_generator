@@ -12,7 +12,7 @@ class ImageGeneratorController < ApplicationController
 
       format.png do
           html = render_to_string(:template => image_data.view)
-          kit = IMGKit.new(html, :quality => 50)
+          kit = IMGKit.new(html, :quality => image_data.quality)
           send_data(kit.to_png, :type => "image/png", :disposition => 'inline')
       end
     end
