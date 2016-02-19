@@ -5,7 +5,7 @@ require "base64"
 RSpec.describe ImageGeneratorController, type: :controller do
   let(:image_meta_data) {"\{\"name\" : \"Stephen\", \"movie\" : \"hi\", \"img\" : \"something.png\", \"view\": \"/invite_maker/something.png\"\}"}
   let(:encrypted_data){Base64.urlsafe_encode64(image_meta_data)}
-  let(:image_data){double(:image_data, view: "image_generator/invite_maker/classic.png", locals: {"name" => "stephen"} )}
+  let(:image_data){double(:image_data, view: "image_generator/invite_maker/classic.png", name: "hello", quality: 50, locals: {"img" => "stephen"} )}
 
   it "extracts the data" do
     expect(ImageData).to receive(:decode).with(encrypted_data).and_return(image_data)

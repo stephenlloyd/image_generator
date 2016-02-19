@@ -1,5 +1,6 @@
 require "base64"
 require "json"
+
 class ImageData
 
   VIEW_EXTENSION = ".erb"
@@ -19,9 +20,7 @@ class ImageData
   end
 
   def locals
-    locals = @data.dup
-    locals.delete("view")
-    locals
+    @data.reject{|k,v| ["view", "name", "quality"].include?(k)}
   end
 
   def name

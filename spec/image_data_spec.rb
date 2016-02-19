@@ -21,7 +21,7 @@ describe ImageData do
   end
 
   it "can extract to local variables" do
-    expect(subject.locals).to eq({"name" => "Stephen", "movie" => "hi", "img" => "something.png" })
+    expect(subject.locals).to eq({"movie" => "hi", "img" => "something.png" })
   end
 
   it("can extract the name from encoded data") do
