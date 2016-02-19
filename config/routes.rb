@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+  get 'imagegenerator/*image', to: 'image_generator#show'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
