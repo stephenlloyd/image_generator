@@ -4,8 +4,9 @@ require "json"
 class ImageData
 
   VIEW_EXTENSION = ".erb"
-  DEFAULT_VIEW = "/default"
+  DEFAULT_VIEW = "default"
   DEFAULT_IMAGE_QUALITY = 50
+  IMAGE_DIRECTORY = "image_generator/"
 
   def self.decode(data)
     new(data: JSON.parse(Base64.urlsafe_decode64(data)))
@@ -16,7 +17,7 @@ class ImageData
   end
 
   def view
-    @data.fetch("view", DEFAULT_VIEW) + VIEW_EXTENSION
+    (IMAGE_DIRECTORY + @data.fetch("view", DEFAULT_VIEW) + VIEW_EXTENSION).gsub("//", "/")
   end
 
   def locals

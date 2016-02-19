@@ -1,3 +1,4 @@
+require 'image_data'
 class ImageGeneratorController < ApplicationController
 
   def show
