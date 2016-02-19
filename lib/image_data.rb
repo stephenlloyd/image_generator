@@ -23,5 +23,9 @@ class ImageData
     locals
   end
 
+  def name
+    @data.fetch("name", @data.hash)
+  end
+
 
 end
